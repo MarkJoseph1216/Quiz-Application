@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <android.support.v7.widget.CardView
+        app:cardCornerRadius="8dp"
+        android:layout_centerInParent="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <RelativeLayout
+            android:layout_width="300dp"
+            android:layout_height="wrap_content">
+
+            <RelativeLayout
+                android:id="@+id/relativeLayout"
+                android:background="@color/red"
+                android:layout_alignParentTop="true"
+                android:layout_centerInParent="true"
+                android:layout_width="match_parent"
+                android:layout_height="40dp">
+
+                <TextView
+                    android:textColor="#fff"
+                    android:textStyle="bold"
+                    android:fontFamily="@font/mregular"
+                    android:text="Game Over"
+                    android:layout_centerInParent="true"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            </RelativeLayout>
+
+            <TextView
+                android:fontFamily="@font/mregular"
+                android:id="@+id/txtScore1"
+                android:textStyle="bold"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_below="@+id/relativeLayout"
+                android:text="Gamer Over"
+                android:layout_marginTop="10dp"
+                android:layout_centerInParent="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <android.support.design.widget.TextInputLayout
+                android:theme="@style/TextInputLayoutAppearance"
+                android:layout_marginLeft="25dp"
+                android:id="@+id/textInputLayout"
+                android:layout_marginTop="15dp"
+                android:layout_centerInParent="true"
+                android:layout_below="@+id/txtScore1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <android.support.design.widget.TextInputEditText
+                    android:id="@+id/edtPlayerName"
+                    android:hint="Input your name"
+                    android:textStyle="bold"
+                    android:fontFamily="@font/mregular"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" />
+            </android.support.design.widget.TextInputLayout>
+
+            <Button
+                android:layout_marginBottom="20dp"
+                android:fontFamily="@font/mregular"
+                android:id="@+id/btnNewGame"
+                android:layout_width="match_parent"
+                android:layout_height="35dp"
+                android:layout_below="@+id/textInputLayout"
+                android:layout_centerInParent="true"
+                android:layout_marginLeft="25dp"
+                android:layout_marginTop="11dp"
+                android:background="@color/red"
+                android:text="NEw GAme"
+                android:textColor="#fff"
+                android:textStyle="bold" />
+        </RelativeLayout>
+    </android.support.v7.widget.CardView>
+</RelativeLayout>

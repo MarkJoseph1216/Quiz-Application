@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/skyBlue"
+    tools:context=".MainActivity">
+
+    <ImageView
+        android:background="@drawable/quizlogo"
+        android:layout_centerInParent="true"
+        android:layout_marginTop="40dp"
+        android:layout_alignParentTop="true"
+        android:id="@+id/imgLogo"
+        android:layout_marginBottom="10dp"
+        android:layout_width="160dp"
+        android:layout_height="140dp" />
+
+    <TextView
+        android:textStyle="bold"
+        android:textSize="24sp"
+        android:layout_centerInParent="true"
+        android:layout_below="@+id/imgLogo"
+        android:fontFamily="serif"
+        android:text="Brain Blitz"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <ImageButton
+        android:id="@+id/btnPlay"
+        android:layout_above="@+id/txtPlay"
+        android:layout_centerInParent="true"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/playicon"
+        android:layout_width="80dp"
+        android:layout_height="70dp"/>
+
+    <TextView
+        android:id="@+id/txtPlay"
+        android:text="Play"
+        android:layout_marginBottom="20dp"
+        android:layout_above="@+id/btnLeaderBoards"
+        android:layout_centerInParent="true"
+        android:textSize="18sp"
+        android:fontFamily="@font/mmedium"
+        android:textStyle="bold"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <ImageButton
+        android:layout_above="@+id/txtSettings"
+        android:id="@+id/btnSettings"
+        android:layout_marginRight="26sp"
+        android:background="@drawable/setttingsicon"
+        android:layout_alignParentRight="true"
+        android:layout_width="80dp"
+        android:layout_height="70dp"/>
+
+    <TextView
+        android:id="@+id/txtSettings"
+        android:layout_marginRight="29dp"
+        android:layout_marginBottom="85dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:text="Settings"
+        android:fontFamily="@font/mmedium"
+        android:textSize="18sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <ImageButton
+        android:id="@+id/btnAboutUs"
+        android:layout_above="@+id/txtAboutUs"
+        android:layout_marginLeft="28dp"
+        android:background="@drawable/aboutusicon"
+        android:layout_width="80dp"
+        android:layout_height="70dp" />
+
+    <TextView
+        android:id="@+id/txtAboutUs"
+        android:textSize="18sp"
+        android:fontFamily="@font/mmedium"
+        android:text="About Us"
+        android:layout_marginLeft="27dp"
+        android:layout_marginBottom="85dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <ImageButton
+        android:scaleType="fitCenter"
+        android:id="@+id/btnLeaderBoards"
+        android:background="@drawable/leaderboardicon"
+        android:layout_centerInParent="true"
+        android:layout_above="@+id/txtLeaderboards"
+        android:layout_width="115dp"
+        android:layout_height="95dp"/>
+
+    <TextView
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:fontFamily="@font/mregular"
+        android:id="@+id/txtLeaderboards"
+        android:layout_marginBottom="15dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerInParent="true"
+        android:text="Leaderboards"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+</RelativeLayout>
