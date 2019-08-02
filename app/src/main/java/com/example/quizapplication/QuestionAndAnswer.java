@@ -3,6 +3,7 @@ package com.example.quizapplication;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.media.AudioManager;
@@ -30,7 +31,9 @@ import android.widget.Toast;
 
 
 import com.bumptech.glide.Glide;
+import com.example.quizapplication.Class.SQLiteHelper;
 import com.example.quizapplication.Utils.Rand;
+import com.facebook.stetho.Stetho;
 
 import java.util.List;
 import java.util.Random;
@@ -73,12 +76,19 @@ public class QuestionAndAnswer extends AppCompatActivity {
     TextInputEditText edtPlayerName;
     Methods methods;
 
+    SQLiteHelper scoreSqliteHelper = new SQLiteHelper(this);
+    SQLiteDatabase database;
+
+    public static long TIMER_INTERVAL = 31000;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.answer_question);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
+
+        Stetho.initializeWithDefaults(this);
 
         AudioManager am = (AudioManager) getSystemService(Context.AUDIO_SERVICE);
         am.setStreamVolume(AudioManager.STREAM_MUSIC,am.getStreamMaxVolume(AudioManager.STREAM_MUSIC),0);
@@ -143,7 +153,6 @@ public class QuestionAndAnswer extends AppCompatActivity {
             public void onClick(View v) {
                 try {
                     mRadioEmpty();
-
                     if(radioValue.equals(mAnswer)){
                         mScore++;
 //                        MediaPlayer mp = MediaPlayer.create(getApplicationContext(), R.raw.correctanswer);
@@ -158,6 +167,7 @@ public class QuestionAndAnswer extends AppCompatActivity {
 //                        }, 1500);
                         imgCheckCorrect.setVisibility(View.GONE);
                         tvScore.setText("Score: " + mScore);
+
                     } else {
                         wrongValue++;
                      }
@@ -224,10 +234,11 @@ public class QuestionAndAnswer extends AppCompatActivity {
                 if (edtPlayerName.getText().toString().equals("")) {
                     Toast.makeText(QuestionAndAnswer.this, "Please enter your name first!", Toast.LENGTH_SHORT).show();
                 } else {
+                    TIMER_INTERVAL = 31000;
                     newGame.dismiss();
-                    methods.createDatabase("Leaderboards");
-                    methods.insertDatabase(edtPlayerName.getText().toString(), String.valueOf(mScore));
+                    database = scoreSqliteHelper.getWritableDatabase();
                     methods.intentMethod(QuestionAndAnswer.class);
+                    database.execSQL("INSERT INTO playersScores(name,playerScore)VALUES('"+edtPlayerName.getText().toString()+"','"+mScore+"')");
                     finish();
                 }
             }
@@ -264,6 +275,12 @@ public class QuestionAndAnswer extends AppCompatActivity {
         values = questions.levelQuestion(questCounter);
         tvLevel.setText(values);
         wrongValue = 0;
+
+        if(tvLevel.getText().toString().equals("AVERAGE")){
+            TIMER_INTERVAL = 21000;
+        } else if(tvLevel.getText().toString().equals("DIFFICULT")){
+            TIMER_INTERVAL = 11000;
+        }
 
         String items = questions.numberItems(questCounter);
 
@@ -357,7 +374,7 @@ public class QuestionAndAnswer extends AppCompatActivity {
 
     private void timerTicked() {
         try {
-            countDownTimerTicker = new CountDownTimer(31000, 1000) {
+            countDownTimerTicker = new CountDownTimer(TIMER_INTERVAL, 1000) {
                 public void onTick(long millisUntilFinished) {
                     txtTimer.setText("Timer: "+ String.valueOf(millisUntilFinished / 1000) + " sec");
                 }
@@ -385,5 +402,10 @@ public class QuestionAndAnswer extends AppCompatActivity {
     protected void onPause() {
         super.onPause();
         stopTimerTicked();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
     }
 }

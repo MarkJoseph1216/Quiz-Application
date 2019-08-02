@@ -6,45 +6,62 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.TextView;
 
-import com.example.quizapplication.Class.Items;
-
-import java.util.List;
+import com.example.quizapplication.R;
+import java.util.ArrayList;
 
 public class ScoreboardAdapter extends BaseAdapter {
 
     private Context context;
-    private LayoutInflater inflater;
-    private List<Items> scoreItems;
+    public LayoutInflater inflater;
 
-    public ScoreboardAdapter(Context context, List<Items>scoreItems){
+    public ArrayList<String> playerName;
+    public ArrayList<String> playerScore;
+
+    public ScoreboardAdapter(Context context, ArrayList<String> playerName, ArrayList<String> playerScore){
         this.context = context;
-        this.scoreItems = scoreItems;
+        this.playerName = playerName;
+        this.playerScore = playerScore;
     }
 
     @Override
     public int getCount() {
-        return scoreItems.size();
+        return playerName.size();
     }
 
     @Override
-    public Object getItem(int location) {
-        return scoreItems.get(location);
+    public Object getItem(int position) {
+        return null;
     }
 
     @Override
     public long getItemId(int position) {
-        return position;
+        return 0;
     }
 
     @Override
-    public View getView(int i, View view, ViewGroup parent) {
-        RecyclerView.ViewHolder holder;
+    public View getView(int position, View view, ViewGroup parent) {
+        final viewHolder holder;
 
-        if(inflater == null){
+        if(view == null){
             inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+            view = inflater.inflate(R.layout.listscore_textlayout, null);
+            holder = new viewHolder();
+            holder.playerName = (TextView) view.findViewById(R.id.playerName);
+            holder.playerScore = (TextView) view.findViewById(R.id.playerScore);
+            view.setTag(holder);
+        } else {
+            holder = (viewHolder) view.getTag();
         }
 
-        return null;
+        holder.playerName.setText(playerName.get(position));
+        holder.playerScore.setText(playerScore.get(position));
+        return view;
+    }
+
+    public class viewHolder {
+        TextView playerName;
+        TextView playerScore;
     }
 }

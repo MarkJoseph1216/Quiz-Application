@@ -32,13 +32,13 @@
         android:layout_centerInParent="true"
         android:layout_marginBottom="10dp"
         android:background="@drawable/playicon"
-        android:layout_width="80dp"
-        android:layout_height="70dp"/>
+        android:layout_width="65dp"
+        android:layout_height="55dp"/>
 
     <TextView
         android:id="@+id/txtPlay"
         android:text="Play"
-        android:layout_marginBottom="20dp"
+        android:layout_marginBottom="30dp"
         android:layout_above="@+id/btnLeaderBoards"
         android:layout_centerInParent="true"
         android:textSize="18sp"
@@ -53,8 +53,8 @@
         android:layout_marginRight="26sp"
         android:background="@drawable/setttingsicon"
         android:layout_alignParentRight="true"
-        android:layout_width="80dp"
-        android:layout_height="70dp"/>
+        android:layout_width="65dp"
+        android:layout_height="55dp"/>
 
     <TextView
         android:id="@+id/txtSettings"
@@ -73,15 +73,15 @@
         android:layout_above="@+id/txtAboutUs"
         android:layout_marginLeft="28dp"
         android:background="@drawable/aboutusicon"
-        android:layout_width="80dp"
-        android:layout_height="70dp" />
+        android:layout_width="65dp"
+        android:layout_height="55dp" />
 
     <TextView
         android:id="@+id/txtAboutUs"
         android:textSize="18sp"
         android:fontFamily="@font/mmedium"
         android:text="About Us"
-        android:layout_marginLeft="27dp"
+        android:layout_marginLeft="20dp"
         android:layout_marginBottom="85dp"
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
@@ -94,8 +94,8 @@
         android:background="@drawable/leaderboardicon"
         android:layout_centerInParent="true"
         android:layout_above="@+id/txtLeaderboards"
-        android:layout_width="115dp"
-        android:layout_height="95dp"/>
+        android:layout_width="110dp"
+        android:layout_height="90dp"/>
 
     <TextView
         android:textSize="18sp"
